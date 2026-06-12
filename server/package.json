@@ -1,0 +1,15 @@
+{
+  "name": "country-hub-server",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node -r dotenv/config server.js",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "mongoose": "^9.6.3",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2"
+  }
+}
