@@ -16,9 +16,7 @@ npm install
 The `.env` file has already been created with your MongoDB connection details:
 
 ```
-MONGODB_URI=mongodb+srv://Poooop:bqYba9heXUcUig1s@cluster0.yicpo.mongodb.net/?appName=Cluster0
-PORT=5000
-NODE_ENV=development
+
 ```
 
 ### 3. Start the Server
