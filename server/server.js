@@ -8,7 +8,10 @@ import Message from './models/Message.js'
 const app = express()
 
 // Middleware
-app.use(cors())
+// Configure CORS: if FRONTEND_ORIGIN is set (production), allow only that origin.
+// Otherwise allow all origins for local development.
+const corsOptions = process.env.FRONTEND_ORIGIN ? { origin: process.env.FRONTEND_ORIGIN } : undefined
+app.use(cors(corsOptions))
 app.use(express.json())
 
 // MongoDB connection
