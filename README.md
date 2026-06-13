@@ -71,3 +71,27 @@ export default defineConfig([
   },
 ])
 ```
+
+## Render Deployment
+
+This project is configured to deploy on Render as a single web service. The backend serves the frontend `dist` build and handles `/api` requests.
+
+### Render service settings
+
+- **Root Directory**: `.country-hub`
+- **Build Command**: `npm install && npm run build`
+- **Start Command**: `npm start`
+- **Environment**: `Node 22` (or latest supported version)
+
+### Environment variables
+
+In Render Dashboard, add these as production secrets:
+
+- `MONGODB_URI` = your MongoDB connection string (do not commit this to GitHub)
+- `FRONTEND_ORIGIN` = the deployed frontend URL, e.g. `https://<your-render-app>.onrender.com`
+
+### Notes
+
+- The app uses `/api` for backend requests, so both frontend and backend are served from the same Render service.
+- If you change `FRONTEND_ORIGIN`, update it in Render and redeploy.
+- The database connection string should only be stored in Render environment variables, not in source control.

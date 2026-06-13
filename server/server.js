@@ -2,8 +2,13 @@ import 'dotenv/config'
 import express from 'express'
 import mongoose from 'mongoose'
 import cors from 'cors'
+import path from 'path'
+import { fileURLToPath } from 'url'
 import messagesRouter from './routes/messages.js'
 import Message from './models/Message.js'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = path.dirname(__filename)
 
 const app = express()
 
@@ -41,6 +46,16 @@ app.use('/api', messagesRouter)
 // Health check
 app.get('/health', (req, res) => {
   res.json({ status: 'Server is running' })
+})
+
+// Serve static files from the frontend dist on production
+const __dirname = path.resolve()
+app.use(express.static(path.join(__dirname, '..', 'dist')))
+app.get('*', (req, res) => {
+  if (req.path.startsWith('/api')) {
+    return res.status(404).json({ error: 'API route not found' })
+  }
+  res.sendFile(path.join(__dirname, '..', 'dist', 'index.html'))
 })
 
 // Error handling middleware
