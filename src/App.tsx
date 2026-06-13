@@ -83,7 +83,7 @@ function App() {
 
   const moodOptions: Mood[] = ['neutral', 'angry', 'cry', 'suspicious']
   const isZoomedIn = zoom >= 5
-  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api'
+  const API_URL = import.meta.env.VITE_API_URL || '/api'
 
   const detectCountry = async () => {
     setIsDetecting(true)
