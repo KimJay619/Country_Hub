@@ -127,7 +127,11 @@ function App() {
     if (storedSubmitAt) {
       setLastSubmitAt(Number(storedSubmitAt))
     }
-  }, [])
+
+    // Poll for new messages every 3 seconds
+    const pollInterval = window.setInterval(fetchMessages, 3000)
+    return () => window.clearInterval(pollInterval)
+  }, [API_URL])
 
   useEffect(() => {
     const interval = window.setInterval(() => setNow(Date.now()), 1000)

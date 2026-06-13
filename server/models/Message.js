@@ -41,9 +41,6 @@ const messageSchema = new mongoose.Schema(
   }
 )
 
-// Automatically remove messages 15 minutes after creation
-messageSchema.index({ createdAt: 1 }, { expireAfterSeconds: 900 })
-
 const Message = mongoose.model('Message', messageSchema)
 
 export default Message
