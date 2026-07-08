@@ -49,7 +49,6 @@ app.get('/health', (req, res) => {
 })
 
 // Serve static files from the frontend dist on production
-const __dirname = path.resolve()
 app.use(express.static(path.join(__dirname, '..', 'dist')))
 app.get('*', (req, res) => {
   if (req.path.startsWith('/api')) {
